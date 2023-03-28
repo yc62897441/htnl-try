@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script>
+            $(function () {
+                var $a1 = $('#a1'),
+                    $a2 = $('#a2'),
+                    $a3 = $('#a3'),
+                    $b = $('#button'),
+                    parameter = {}
+
+                $b.on('click', function () {
+                    parameter = {
+                        data: '4567890',
+                        sheetUrl: 'https://docs.google.com/spreadsheets/d/1ibRdHxxxxxxxxxx/edit#gid=0',
+                        sheetTag: '工作表1',
+                    }
+                    console.log(parameter)
+                    $.get('https://script.google.com/macros/s/AKfycbwxxxxxxx/dev', parameter, {
+                        header: {
+                            origin: '/123',
+                        },
+                    })
+                })
+            })
+        </script>
+    </head>
+
+    <body>
+        第一欄：<input id="a1" /><br />
+        第二欄：<input id="a2" /><br />
+        第三欄：<input id="a3" /><br />
+        <button id="button">儲存</button>
+    </body>
+</html>

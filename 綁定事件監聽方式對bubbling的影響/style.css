@@ -1,0 +1,27 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+.parent {
+    width: 100%;
+    padding: 20px;
+    border: 2px solid firebrick;
+}
+
+.child {
+    width: 100%;
+    padding: 20px;
+    border: 2px solid navy;
+}
+
+.dividing {
+    width: 100%;
+    margin: 10px 0;
+    padding: 20px;
+    border: 2px solid darkgreen;
+}

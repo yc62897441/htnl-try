@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+
+        <style>
+            .container {
+                background: #336699;
+                width: 800px;
+                height: 400px;
+                border: solid #6699cc 2px;
+                padding: 3px 3px 3px 3px;
+                border-radius: 5px;
+            }
+            .object {
+                width: 150px;
+                border: solid #244872 2px;
+                border-radius: 3px;
+                text-align: center;
+                background: #99ccff;
+                padding: 20px;
+                margin: 20px 0;
+                cursor: move;
+            }
+
+            @keyframes moveAnimation {
+                0% {
+                    transform: translateX(0px);
+                }
+                50% {
+                    transform: translateX(100px);
+                }
+                100% {
+                    transform: translateX(0px);
+                }
+            }
+
+            .isAnimation {
+                /* animation: moveAnimation 10s infinite; */
+            }
+
+            .inobject {
+                border: solid #428472 2px;
+                border-radius: 3px;
+                text-align: center;
+                background: #11cc66;
+                padding: 2px 2px 2px 2px;
+                /* cursor: move; */
+            }
+        </style>
+    </head>
+    <body>
+        <div id="panel1" class="container">
+            <div id="source1" class="object isAnimation">
+                Test1
+                <div class="inobject">in Test1</div>
+            </div>
+            <div id="source2" class="object">Test2</div>
+            <div id="source3" class="object">Test3</div>
+            <div id="source4" class="object">Test4</div>
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <div id="panel2" class="container"></div>
+
+        <script>
+            ;(function () {
+                function ListIterator(o, cb) {
+                    for (let i = 0; i < o.length; i++) {
+                        cb(o.item(i))
+                    }
+                }
+
+                // 取消預設事件處理
+                document.ondragover = function (e) {
+                    e.preventDefault()
+                }
+                document.ondrop = function (e) {
+                    e.preventDefault()
+                }
+
+                ListIterator(document.getElementsByClassName('object'), function (o) {
+                    // 設定可拖曳屬性為 true
+                    o.draggable = true
+                })
+                ListIterator(document.getElementsByClassName('object'), function (o) {
+                    o.draggable = true
+                    o.addEventListener(
+                        'dragstart',
+                        function (e) {
+                            // 設定允許的 drag 運作效果
+                            e.dataTransfer.effectAllowed = 'all'
+
+                            // text/plain的意思是將文件設置為純文本的形式，瀏覽器在獲取到這種文件時並不會對其進行處理
+                            e.dataTransfer.setData('text/plain', this.id)
+                        },
+                        false
+                    )
+                })
+
+                ListIterator(document.getElementsByClassName('container'), function (o) {
+                    // 被拖曳物件在 container 中移動到可放置的位置時
+                    o.addEventListener(
+                        'dragenter',
+                        function (e) {
+                            e.preventDefault()
+                        },
+                        false
+                    )
+
+                    // 被拖曳物件在 container 中移動時
+                    o.addEventListener(
+                        'dragover',
+                        function (e) {
+                            e.preventDefault()
+                            // 'copy': A copy of the source item is made at the new location
+                            // https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dragover_event
+                            e.dataTransfer.dropEffect = 'copy'
+                        },
+                        false
+                    )
+
+                    // 被拖曳物件在 container 被放置時
+                    o.addEventListener(
+                        'drop',
+                        function (e) {
+                            e.preventDefault()
+                            e.stopPropagation()
+                            if (e.target !== e.currentTarget) return false
+
+                            if (e.dataTransfer.types.length > 0) {
+                                for (let i = 0; i < e.dataTransfer.types.length; i++) {
+                                    if (e.dataTransfer.types[i] === 'text/plain') {
+                                        // 取得被拖曳的物件
+                                        let sourceid = e.dataTransfer.getData('text/plain')
+                                        let source = document.getElementById(sourceid)
+
+                                        // 原本的 container 中移除被拖曳的物件，在新的 container 中新增被拖曳的物件
+                                        // source.parentNode.removeChild(source)
+                                        // e.currentTarget.appendChild(source)
+                                        e.currentTarget.appendChild(source.parentNode.removeChild(source))
+                                    }
+                                }
+                                return false
+                            }
+                        },
+                        false
+                    )
+                })
+            })()
+        </script>
+    </body>
+</html>

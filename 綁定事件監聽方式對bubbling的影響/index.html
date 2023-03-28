@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>綁定事件監聽方式對bubbling的影響</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+
+    <body>
+        <!-- 用 querySelector 綁定事件監聽 -->
+        <section id="parent" class="parent">
+            This is the parent element. 這個區塊的元件的事件監聽是用 querySelector 綁定
+            <div id="child" class="child">This is the child element</div>
+        </section>
+
+        <div class="dividing">This is the dividing line</div>
+
+        <!-- 事件監聽是直接寫在元件上 -->
+        <section class="parent" onclick="parentClickFunction()">
+            This is the parent element. 這個區塊的元件的事件監聽是直接寫在元件上
+            <div class="child" onclick="childClickFunction()">This is the child element</div>
+        </section>
+
+        <script>
+            // 用 querySelector 綁定事件監聽
+            const parent = document.querySelector('#parent')
+            const child = document.querySelector('#child')
+            parent.addEventListener('click', () => {
+                console.log('parent')
+            })
+            child.addEventListener('click', () => {
+                console.log('child')
+            })
+
+            // 直接把事件監聽寫在元件上
+            function parentClickFunction() {
+                console.log('parent')
+            }
+            function childClickFunction() {
+                console.log('child')
+            }
+        </script>
+    </body>
+</html>
