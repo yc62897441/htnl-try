@@ -23,7 +23,6 @@ const rollRight = document.querySelector('#rollRight')
 
 rollLeft.addEventListener('click', () => {
   console.log('rollLeft')
-
   elements.forEach((element) => {
     element.classList.remove('right')
     element.classList.add('left')
