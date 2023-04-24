@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>時間使用new date</title>
+        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans" />
+    </head>
+    <body>
+        <section>
+            <div class="group">
+                <h1>new Date()</h1>
+                <p>基於世界標準時間（UTC） 1970 年 1 月 1 日開始的毫秒數值來儲存時間。</p>
+                <div class="target-wrapper">
+                    new Date():
+                    <span id="target1" class="target"></span>
+                </div>
+            </div>
+
+            <div class="group">
+                <h1>new Date(value)</h1>
+                <p>
+                    value 為自世界標準時間（UTC） 1970 年 1 月 1 日 00:00:00
+                    開始的毫秒整數（Integer）值。
+                </p>
+                <div class="target-wrapper">
+                    new Date(1481361366000):
+                    <span id="target2" class="target"></span>
+                </div>
+            </div>
+
+            <div class="group">
+                <h1>new Date(year, month[, day[, hour[, minutes[, seconds[, milliseconds]]]]])</h1>
+                <p>（注意月份值由 0 開始）</p>
+                <div class="target-wrapper">
+                    new Date(1990, 0, 1):
+                    <span id="target3" class="target"></span>
+                </div>
+            </div>
+
+            <div class="group">
+                <h1>new Date(year, month[, day[, hour[, minutes[, seconds[, milliseconds]]]]])</h1>
+                <p>（注意月份值由 0 開始）</p>
+                <div class="target-wrapper">
+                    new Date(1990, 0, 1, 20, 30, 15):
+                    <span id="target4" class="target"></span>
+                </div>
+            </div>
+
+            <div class="group">
+                <h1>new Date('2017-07-09 00:00:00 +0800')</h1>
+                <p>沒有寫時區的話，預設就會抓當地時區的時間</p>
+                <div class="target-wrapper">
+                    new Date('2017-07-09 00:00:00 +0800'):
+                    <span id="target5" class="target"></span>
+                </div>
+            </div>
+
+            <div class="group">
+                <h1>Date.now()</h1>
+                <p></p>
+                <div class="target-wrapper">
+                    Date.now():
+                    <span id="target6" class="target"></span>
+                </div>
+            </div>
+        </section>
+        <script src="main.js"></script>
+    </body>
+</html>
