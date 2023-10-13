@@ -2,7 +2,8 @@
     box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
 }
@@ -13,7 +14,7 @@ html, body {
     justify-content: flex-start;
     align-items: center;
     width: 100%;
-    height: 3000px;
+    /* height: 3000px; */
     padding: 200px 0;
     border: 2px solid firebrick;
 }
@@ -24,10 +25,11 @@ html, body {
     justify-content: center;
     align-items: center;
 
-    width: 80%;
+    width: 100%;
     height: 500px;
     margin: 50px auto;
-    border: 2px solid navy;
+    margin: 10px auto;
+    /* border: 2px solid navy; */
 
     background-repeat: no-repeat;
     background-position: center center;
@@ -40,13 +42,17 @@ html, body {
 }
 
 .block1 {
-    background-image: url("https://images.pexels.com/photos/2724664/pexels-photo-2724664.jpeg");
+    background-image: url('https://images.pexels.com/photos/2724664/pexels-photo-2724664.jpeg');
 }
 
 .block2 {
-    background-image: url("https://images.pexels.com/photos/1020010/pexels-photo-1020010.jpeg");
+    background-image: url('https://images.pexels.com/photos/1020010/pexels-photo-1020010.jpeg');
 }
 
 .block3 {
-    background-image: url("https://images.pexels.com/photos/1287145/pexels-photo-1287145.jpeg");
+    background-image: url('https://images.pexels.com/photos/1287145/pexels-photo-1287145.jpeg');
+}
+
+.block4 {
+    background-image: url('https://ichef.bbci.co.uk/news/976/cpsprodpb/15B4F/production/_87911988_istock_000008117557_large.jpg');
 }
